@@ -1,0 +1,60 @@
+<html>
+
+<head>
+    <title>Coronavirus Pandemic Survival Game</title>
+
+    <script defer src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous" ></script>
+
+    <script src="/js/game.js" defer></script>
+
+    <link rel="stylesheet" href="/css/css.css" />
+
+</head>
+
+<body>
+    <section id="headerArea">
+        <h1>Survive the pandemic! </h1>
+        <p>Welcome to hell! The government has given you $1,200 to get to the end of the game.<br/>
+            <em>But, wait!!!!</em> 
+            <br/>There’s no real end to the game... You get to just keep playing until it magically
+            ends, and we aren’t going to help you after this moment!<br/>Good luck!! </p>
+
+            <button class="bigButton" id="startButton">START!</button>
+    </section>
+    <section id="gametoolbar">
+        <span class="tool">
+            <label for="money">Money:</label>
+            <input type="number" disabled id="money" name="money" />
+        </span>
+        <span class="tool">
+            <label for="cannedFoods">Canned Foods:</label>
+            <input type="number" disabled id="cannedFoods" name="cannedFoods" />
+        </span>
+        <span class="tool">
+            <label for="sourdoughStarter">Sourdough Starter:</label>
+            <input type="number" disabled id="sourdoughStarter" name="sourdoughStarter" />
+        </span>
+        <span class="tool">
+            <label for="masks">Masks</label>
+            <input type="number" disabled id="masks" name="masks" />
+        </span>
+    </section>
+
+    <div id="game">
+      
+        <!-- js loads here -->
+
+        <div id="dayArea">
+            <h2>Day <span id="dayNum"></span></h2>
+            <p id="appreaction"></p>
+            <p id="prompt">Today is Sunday. What do you do?</p>
+            <input type="text" class="bigText" id="theInput" placeholder="What wouldst thou deau?" />
+        </div>
+
+
+       
+    </div>
+</body>
+
+</html>

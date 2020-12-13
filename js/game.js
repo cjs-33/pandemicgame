@@ -96,8 +96,19 @@ $("#theInput").on('keyup', function (e) {
             case "watch tv":
             case "watch television":
             case "tv":
-                appReact("You watch this awesome show called Attack on Titan and you get completely hooked by it. Some would say you 'lose' 2 days, but you really don't count them as lost at all. It is an amazing show and the final season starts in December. Can't wait.");
-                incrementDay();
+                var tvArray = [
+                    "You watch this awesome show called Attack on Titan and you get completely hooked by it. Some would say you 'lose' 2 days, but you really don't count them as lost at all. It is an amazing show and the final season starts in December. Can't wait.",
+                    "<em>Thank you for being a friiiiiiiiieeeennnndddd....</em>",
+                    "FOX News makes a lot of sens----oh shit I gotta get outta this house.",
+                    "Frasier oscillates between being incredibly good and incredibly annoying. Here comes season 6!",
+                    "What are your favorite TNG episodes?",
+                    "Well, at least they defunded COPS."
+                ];
+                var tvToWatch = Math.floor(Math.random() * tvArray.length);
+                appReact("You decide to watch some TV. <br/>" + tvArray[tvToWatch]);
+                if (tvToWatch == 0) {
+                    incrementDay();
+                }
                 incrementDay();
                 break;
             case "find job":
@@ -156,7 +167,15 @@ $("#theInput").on('keyup', function (e) {
             case "video games":
             case "play video game":
             case "play video games":
-                appReact("Video games don't make society violent; ignoring the plight of all but the richest/luckiest in the country makes people violent. But hey - Tetris is pretty great.");
+                var vgArray = [
+                    "Video games don't make society violent; ignoring the plight of all but the richest/luckiest in the country makes people violent. But hey - Tetris is pretty great.",
+                    "DOOM ETERNAL, HERE WE GO",
+                    "Is it Cyberpunk 2077 time yet??",
+                    "Factorio for another 24 hours. The factory must grow.",
+                    "Is it possible to clear all the lines in Tetris?? Let's find out."
+                ]
+                var vgToPlay = Math.floor(Math.random() * vgArray.length);
+                appReact(vgArray[vgToPlay]);
                 incrementDay();
                 break;
 
@@ -167,10 +186,9 @@ $("#theInput").on('keyup', function (e) {
             case "go to the store":
             case "go to kroger":
                 if (wearingMask) {
-                    appReact("You go shopping at your local Kroger/Giant Eagle/Meijer. You brought your Wine With DeWine thermos so you could watch on the TVs while pushing your cart down the one-way aisles and carefully adjusting your glasses because they keep fucking fogging up. <br/>You didn't get toilet paper because, surprise, they were still out. You spent $100.");
+                    appReact("You go shopping at your local Kroger/Giant Eagle/Meijer. You brought your Wine With DeWine thermos filled to the brim, so you're ready to watch on the TVs while pushing your cart down the one-way aisles and carefully adjusting your glasses because they keep fucking fogging up. <br/>You didn't get toilet paper because, surprise, they were still out. You spent $100.");
                     updateMoney(money - 100);
                     incrementDay();
-                    clearPrompt();
                     wearingMask = false;
                     appPrompt("It's the next day. Now what?");
 

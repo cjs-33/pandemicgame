@@ -48,7 +48,7 @@ $("#theInput").on('keyup', function (e) {
         }
         userInput = $(this).val();
         console.log(userInput);
-
+        userInput = userInput.toLowerCase().trim();
         switch (userInput) {
             case "put on mask":
             case "put on a mask":
@@ -123,9 +123,13 @@ $("#theInput").on('keyup', function (e) {
                 }
                 incrementDay();
                 break;
+            case "enter cave":
+                appReact("You're not currently playing a video game.");
+                break;
             case "bake bread":
             case "make bread":
             case "make sourdough":
+            case "make sourdough bread":
             case "use sourdough":
             case "user sourdough starter":
                 if (sourdoughStarters > 0) {
@@ -136,7 +140,7 @@ $("#theInput").on('keyup', function (e) {
                         appReact("You literally have no idea what to do with this bread starter -- is sourdough even a bread? -- so you flail at the oven and nothing happens. ");
                         updateSourdough(sourdoughStarters - 1);
                     } else {
-                        appReact("You tried at this thing for like, seriously 23 out of your 24 hours today. Apart from a few fires, where you learned how to use your fire extinguisher finally after you've had it in your broom closet for hte last 8 years wondering what it was half the time, this was an unmitigated disaster. You have no sourdough left, and it's probably for the best.");
+                        appReact("You tried at this thing for like, seriously 23 out of your 24 hours today. Apart from a few fires, where you learned how to use your fire extinguisher finally after you've had it in your broom closet for the last 8 years wondering what it was half the time, this was an unmitigated disaster. You have no sourdough left, and it's probably for the best.");
                         updateSourdough(0);
                     }
                     incrementDay();
@@ -144,6 +148,18 @@ $("#theInput").on('keyup', function (e) {
                     appReact("Awkward - you have no sourdough starters with which to start sourdough. Try something else?");
                 }
                 break;
+            case "play animal crossing":
+            case "animal crossing":
+                appReact("Better get back to trying to pay off that damn basement.");
+                incrementDay();
+                break;
+            case "video games":
+            case "play video game":
+            case "play video games":
+                appReact("Video games don't make society violent; ignoring the plight of all but the richest/luckiest in the country makes people violent. But hey - Tetris is pretty great.");
+                incrementDay();
+                break;
+
             case "get groceries":
             case "go shopping":
             case "ford the grocery aisle":

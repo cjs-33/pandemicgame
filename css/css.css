@@ -12,15 +12,24 @@ section#headerArea {
 }
 
 section#gametoolbar {
-    min-height: 50px;
     border: 1px solid #ccc;
     width: 90%;
     margin-left: 20px;
     display:none;
+    padding: 15px; 
+    text-align: center;
 }
 
 #gametoolbar span.tool {
     font-weight: bold;
+    margin-right: 10px;
+    
+}
+
+span.tool input{
+    font-size: 18px;
+    width: 100px;
+    text-align: center;
 }
 
 button.bigButton {

@@ -77,10 +77,16 @@ $("#theInput").on('keyup', function (e) {
                     }
 
                 } else {
-                    caughtCovid = checkCatch();
-                    if (!caughtCovid) {
-                        if (day !== 1) {
-                            appReact("You went to work like any other normal day... except you realize you don't have a job. You were laid off a month ago. So you went nowhere. Luckily you still have $" + money + " left!");
+                    if (day == 1) {
+                        appReact("You... don't know how to read a calendar, and you went to work on Sunday. No one's here, good thing. You realized you don't have to work so you went back home.");
+                    } else { 
+                        caughtCovid = checkCatch();
+                        if (!caughtCovid) {
+                            if (day !== 1) {
+                                appReact("You went to work like any other normal day... except you realize you don't have a job. You were laid off a month ago. So you went nowhere. Luckily you still have money left (I think)!");
+                            }
+                        } else {
+                            getCovid();
                         }
                     }
                 }
@@ -92,7 +98,7 @@ $("#theInput").on('keyup', function (e) {
             case "tv":
                 appReact("You watch this awesome show called Attack on Titan and you get completely hooked by it. Some would say you 'lose' 2 days, but you really don't count them as lost at all. It is an amazing show and the final season starts in December. Can't wait.");
                 incrementDay();
-                incrementDay(); 
+                incrementDay();
                 break;
             case "find job":
             case "find a job":
@@ -142,6 +148,8 @@ $("#theInput").on('keyup', function (e) {
             case "go shopping":
             case "ford the grocery aisle":
             case "ford the grocery ailes":
+            case "go to the store":
+            case "go to kroger":
                 if (wearingMask) {
                     appReact("You go shopping at your local Kroger/Giant Eagle/Meijer. You brought your Wine With DeWine thermos so you could watch on the TVs while pushing your cart down the one-way aisles and carefully adjusting your glasses because they keep fucking fogging up. <br/>You didn't get toilet paper because, surprise, they were still out. You spent $100.");
                     updateMoney(money - 100);
@@ -197,6 +205,7 @@ $("#theInput").on('keyup', function (e) {
                     caughtCovid = checkCatch();
                     if (caughtCovid) {
                         alert("Even though you were wearing your mask, you caught COVID from some asshole that had it around his chin the whole damn time. ");
+                        getCovid();
                     } else {
                         appReact("You went out and had a good time. You were wearing your mask, and you spotted a few people with it around their mouth, or chin, and you still scraped by without getting it. Overall you didn't really want to go and now have a gnawing fear for the next time you go out. That's totally normal, right? ....Right??");
                         incrementDay();
@@ -221,14 +230,14 @@ $("#theInput").on('keyup', function (e) {
 
         clearInput();
         clearPrompt();
-       
+
 
 
         if (rentDueTomorrow && day == rentDueDay) {
             updateMoney(money - 500);
             rentDueTomorrow = false;
         }
-    
+
         if (day % 5 == 0) {
             appPrompt("<strong>Your rent is due tomorrow! $500 will be debited from your account!</strong>");
             rentDueTomorrow = true;
@@ -262,7 +271,6 @@ function clearPrompt() {
 
 function checkCatch() {
     if (!wearingMask && luck < 0.5) {
-        getCovid();
         return true;
     } else {
         if (luck > 0.9) {

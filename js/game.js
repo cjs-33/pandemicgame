@@ -158,6 +158,8 @@ $("#theInput").on('keyup', function (e) {
                         updateMoney(money - 200);
                         incrementDay();
                         appPrompt("It's the next day. Now what?");
+                    } else {
+                        getCovid();
                     }
                 }
                 break;
